@@ -1,0 +1,686 @@
+/*
+Website Linkedin PHP
+Copyright (C) 2013  Luis Enrique Arriojas Catalini
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+.break {
+    clear: both;
+}
+
+#wallpaper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-image: url(../img/wood.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-color: #505050;
+}
+
+@media (min-width: 1050px) {
+    #photo {
+        width: 80px;
+        height: 80px;
+        background-repeat: no-repeat;
+        margin: 10px 50px 0 0;
+        float: left;
+    }
+
+    #intro {
+        width: 770px;
+        height: auto;
+        float: left;
+    }
+
+    #intro h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 36px;
+    }
+
+    #intro h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: gray;
+    }
+
+    #intro h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: gray;
+    }
+
+    #menu {
+        width: 900px;
+        height: auto;
+        margin: 50px auto 0 auto;
+        padding: 50px;
+    }
+
+    #menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 25px;
+        -moz-column-count: 2; /* Firefox */
+        -webkit-column-count: 2; /* Safari and Chrome */
+        column-count: 2;
+    }
+
+    #menu ul li {
+        padding: 0;
+    }
+
+    #menu ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+    }
+
+    #menu ul li a:hover {
+        color: gray;
+    }
+
+    section {
+        width: 900px;
+        height: auto;
+        margin: 50px auto 0 auto;
+        padding: 50px;
+        background-image: url(../img/black-fabric.png);
+        background-repeat: repeat;
+        box-shadow: 0 10px 10px black;
+    }
+
+    section h2 {
+        margin: 0 0 50px 0;
+        padding: 0;
+        font-size: 25px;
+        color: white;
+    }
+
+    section h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: white;
+    }
+
+    section h3 a {
+        text-decoration: none;
+        color: white;
+    }
+
+    section h3 a:hover {
+        color: gray;
+    }
+
+    section h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    section h5 {
+        margin: 0 0 10px 0;
+        padding: 0;
+        font-size: 14px;
+        color: gray;
+    }
+
+    section p {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    #skills-content {
+        width: 100%;
+        height: auto;
+        -moz-column-count: 2; /* Firefox */
+        -webkit-column-count: 2; /* Safari and Chrome */
+        column-count: 2;
+    }
+
+    #skills-content ul {
+        padding: 0 0 0 16px;
+    }
+
+    .item {
+        border-bottom: 1px solid white;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+
+    .item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    #footer {
+        height: auto;
+        margin: 50px 0 0 0;
+        padding: 50px;
+        background-image: url(../img/retina_wood.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0 10px 10px -5px black inset;
+        text-align: center;
+        color: gray;
+    }
+
+    #footer a {
+        color: #0783B6;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 780px) and (max-width: 1049px) {
+    #photo {
+        width: 80px;
+        height: 80px;
+        background-repeat: no-repeat;
+        margin: 10px 50px 0 0;
+        float: left;
+    }
+
+    #intro {
+        width: 500px;
+        height: auto;
+        float: left;
+    }
+
+    #intro h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 36px;
+    }
+
+    #intro h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: gray;
+    }
+
+    #intro h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: gray;
+    }
+
+    #menu {
+        width: 630px;
+        height: auto;
+        margin: 50px auto 0 auto;
+        padding: 50px;
+    }
+
+    #menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 25px;
+        -moz-column-count: 2; /* Firefox */
+        -webkit-column-count: 2; /* Safari and Chrome */
+        column-count: 2;
+    }
+
+    #menu ul li {
+        padding: 0;
+    }
+
+    #menu ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+    }
+
+    #menu ul li a:hover {
+        color: gray;
+    }
+
+    section {
+        width: 630px;
+        height: auto;
+        margin: 50px auto 0 auto;
+        padding: 50px;
+        background-image: url(../img/black-fabric.png);
+        background-repeat: repeat;
+        box-shadow: 0 10px 10px black;
+    }
+
+    section h2 {
+        margin: 0 0 50px 0;
+        padding: 0;
+        font-size: 25px;
+        color: white;
+    }
+
+    section h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: white;
+    }
+
+    section h3 a {
+        text-decoration: none;
+        color: white;
+    }
+
+    section h3 a:hover {
+        color: gray;
+    }
+
+    section h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    section h5 {
+        margin: 0 0 10px 0;
+        padding: 0;
+        font-size: 14px;
+        color: gray;
+    }
+
+    section p {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    #skills-content {
+        width: 100%;
+        height: auto;
+        -moz-column-count: 2; /* Firefox */
+        -webkit-column-count: 2; /* Safari and Chrome */
+        column-count: 2;
+    }
+
+    #skills-content ul {
+        padding: 0 0 0 16px;
+    }
+
+    .item {
+        border-bottom: 1px solid white;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+
+    .item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    #footer {
+        height: auto;
+        margin: 50px 0 0 0;
+        padding: 50px;
+        background-image: url(../img/retina_wood.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0 10px 10px -5px black inset;
+        text-align: center;
+        color: gray;
+    }
+
+    #footer a {
+        color: #0783B6;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 590px) and (max-width: 779px) {
+    #photo {
+        width: 80px;
+        height: 80px;
+        background-repeat: no-repeat;
+        margin: 10px 50px 0 0;
+        float: left;
+    }
+
+    #intro {
+        width: 310px;
+        height: auto;
+        float: left;
+    }
+
+    #intro h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 36px;
+    }
+
+    #intro h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: gray;
+    }
+
+    #intro h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: gray;
+    }
+
+    #menu {
+        width: 440px;
+        height: auto;
+        margin: 50px auto 0 auto;
+        padding: 50px;
+    }
+
+    #menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 25px;
+        -moz-column-count: 2; /* Firefox */
+        -webkit-column-count: 2; /* Safari and Chrome */
+        column-count: 2;
+    }
+
+    #menu ul li {
+        padding: 0;
+    }
+
+    #menu ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+    }
+
+    #menu ul li a:hover {
+        color: gray;
+    }
+
+    section {
+        width: 440px;
+        height: auto;
+        margin: 50px auto 0 auto;
+        padding: 50px;
+        background-image: url(../img/black-fabric.png);
+        background-repeat: repeat;
+        box-shadow: 0 10px 10px black;
+    }
+
+    section h2 {
+        margin: 0 0 50px 0;
+        padding: 0;
+        font-size: 25px;
+        color: white;
+    }
+
+    section h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: white;
+    }
+
+    section h3 a {
+        text-decoration: none;
+        color: white;
+    }
+
+    section h3 a:hover {
+        color: gray;
+    }
+
+    section h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    section h5 {
+        margin: 0 0 10px 0;
+        padding: 0;
+        font-size: 14px;
+        color: gray;
+    }
+
+    section p {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    #skills-content {
+        width: 100%;
+        height: auto;
+        -moz-column-count: 2; /* Firefox */
+        -webkit-column-count: 2; /* Safari and Chrome */
+        column-count: 2;
+    }
+
+    #skills-content ul {
+        padding: 0 0 0 16px;
+    }
+
+    .item {
+        border-bottom: 1px solid white;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+
+    .item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    #footer {
+        height: auto;
+        margin: 50px 0 0 0;
+        padding: 50px;
+        background-image: url(../img/retina_wood.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0 10px 10px -5px black inset;
+        text-align: center;
+        color: gray;
+    }
+
+    #footer a {
+        color: #0783B6;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 589px) {
+    #photo {
+        width: 80px;
+        height: 80px;
+        background-repeat: no-repeat;
+        margin: 0 auto 0 auto;
+    }
+
+    #intro {
+        width: auto;
+        height: auto;
+    }
+
+    #intro h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 36px;
+    }
+
+    #intro h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: gray;
+    }
+
+    #intro h3 {
+        margin: 25px 0 0 0;
+        padding: 0;
+        font-size: 16px;
+        color: gray;
+    }
+
+    #menu {
+        width: 250px;
+        height: auto;
+        margin: 25px auto 0 auto;
+        padding: 25px;
+    }
+
+    #menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 25px;
+    }
+
+    #menu ul li {
+        padding: 0;
+    }
+
+    #menu ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+    }
+
+    #menu ul li a:hover {
+        color: gray;
+    }
+
+    section {
+        width: 250px;
+        height: auto;
+        margin: 25px auto 0 auto;
+        padding: 25px;
+        background-image: url(../img/black-fabric.png);
+        background-repeat: repeat;
+        box-shadow: 0 10px 10px black;
+    }
+
+    section h2 {
+        margin: 0 0 25px 0;
+        padding: 0;
+        font-size: 25px;
+        color: white;
+    }
+
+    section h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: white;
+    }
+
+    section h3 a {
+        text-decoration: none;
+        color: white;
+    }
+
+    section h3 a:hover {
+        color: gray;
+    }
+
+    section h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    section h5 {
+        margin: 0 0 10px 0;
+        padding: 0;
+        font-size: 14px;
+        color: gray;
+    }
+
+    section p {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: white;
+    }
+
+    #skills-content {
+        width: auto;
+        height: auto;
+    }
+
+    #skills-content ul {
+        padding: 0 0 0 16px;
+    }
+
+    .item {
+        border-bottom: 1px solid white;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+    }
+
+    .item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    #footer {
+        height: auto;
+        margin: 25px 0 0 0;
+        padding: 25px;
+        background-image: url(../img/retina_wood.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0 10px 10px -5px black inset;
+        text-align: center;
+        color: gray;
+    }
+
+    #footer a {
+        color: #0783B6;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}

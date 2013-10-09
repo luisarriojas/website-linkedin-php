@@ -1,0 +1,190 @@
+<!--
+Website Linkedin PHP
+Copyright (C) 2013  Luis Enrique Arriojas Catalini
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!doctype html>
+<html ng-app ng-controller="linkedinCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Work experience & skills of {{profile.firstName}} {{profile.lastName}}">
+    <META name="keywords"
+          content="{{profile.firstName}} {{profile.lastName}} work experience skills projects volunteer">
+    <title ng-bind-template="{{profile.firstName}} {{profile.lastName}} - Experience & Skills"></title>
+
+    <!--css-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script>
+        function linkedinCtrl($scope, $http) {
+            $http({
+                method: "GET",
+                url: "scripts/profile.json"
+            }).success(function (data) {
+                        $scope.profile = data;
+                        $scope.profile.summary = $scope.profile.summary.replace(/\n/g, "<br>");
+                    });
+        }
+    </script>
+</head>
+<body>
+<div id="wallpaper"></div>
+
+<!--Intro-->
+<a name="home"></a>
+<section>
+    <div id="photo" style="background-image: url({{profile.pictureUrl}});"></div>
+    <div id="intro">
+        <h1>{{profile.firstName}} {{profile.lastName}}</h1>
+
+        <h2>{{profile.headline}}</h2>
+
+        <h3>{{profile.location.name}} | {{profile.industry}}</h3>
+        <a href="{{profile.publicProfileUrl}}" style="text-decoration:none;">
+            <img src="img/btn_in_20x15.png" width="20" height="15"
+                 alt="View Luis Arriojas's LinkedIn profile" style="vertical-align:middle" border="0">
+            <span style="color:#0783B6; font-weight: 700;">View Luis Arriojas's profile</span>
+        </a>
+    </div>
+    <div class="break"></div>
+</section>
+
+<!--Menu-->
+<div id="menu">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#summary">Summary</a></li>
+        <li ng-show="profile.positions._total"><a href="#experience">Experience</a></li>
+        <li ng-show="profile.skills._total"><a href="#skills">Skills & Expertise</a></li>
+        <li ng-show="profile.projects._total"><a href="#projects">Projects</a></li>
+        <li ng-show="profile.educations._total"><a href="#education">Education</a></li>
+        <li ng-show="profile.languages._total"><a href="#languages">Languages</a></li>
+        <li ng-show="profile.volunteer.volunteerExperiences._total"><a href="#volunteer">Volunteer Experience &
+            Causes</a></li>
+        <li><a href="#contact">Advice for Contacting me</a></li>
+    </ul>
+</div>
+
+<!--Summary-->
+<a name="summary"></a>
+<section>
+    <h2>Summary</h2>
+
+    <p ng-bind-html-unsafe="profile.summary"></p>
+</section>
+
+<!--Experience-->
+<a name="experience"></a>
+<section ng-show="profile.positions._total">
+    <h2>Experience</h2>
+
+    <div ng-repeat="position in profile.positions.values" class="item">
+        <h3>{{position.title}}</h3>
+        <h4>{{position.company.name}} | {{position.company.industry}}</h4>
+        <h5>{{position.startDate.year}} - <span ng-show="position.isCurrent">Present</span><span
+                ng-hide="position.isCurrent">{{position.endDate.year}}</span></h5>
+
+        <p>{{position.summary}}</p>
+    </div>
+</section>
+
+<!--Skills-->
+<a name="skills"></a>
+<section ng-show="profile.skills._total">
+    <h2>Skills & Expertise</h2>
+
+    <div id="skills-content">
+        <ul ng-repeat="skill in profile.skills.values">
+            <li>{{skill.skill.name}}</li>
+        </ul>
+    </div>
+</section>
+
+<!--Projects-->
+<a name="projects"></a>
+<section ng-show="profile.projects._total">
+    <h2>Projects
+        <div ng-repeat="project in profile.projects.values" class="item">
+            <h3><a href="{{project.url}}">{{project.name}}</a></h3>
+            <h5>{{project.description}}</h5>
+        </div>
+</section>
+
+<!--Education-->
+<a name="education"></a>
+<section ng-show="profile.educations._total">
+    <h2>Education</h2>
+
+    <div ng-repeat="education in profile.educations.values" class="item">
+        <h3>{{education.schoolName}}</h3>
+        <h4>{{education.degree}}, {{education.fieldOfStudy}}</h4>
+        <h5>{{education.startDate.year}} - {{education.endDate.year}}</h5>
+
+        <p>{{education.notes}}</p>
+    </div>
+</section>
+
+<!--Languages-->
+<a name="languages"></a>
+<section ng-show="profile.languages._total">
+    <h2>Languages</h2>
+
+    <div ng-repeat="language in profile.languages.values" class="item">
+        <h3>{{language.language.name}}</h3>
+        <h5>{{language.proficiency.name}}</h5>
+    </div>
+</section>
+
+<!--Volunteer-->
+<a name="volunteer"></a>
+<section ng-show="profile.volunteer.volunteerExperiences._total">
+    <h2>Volunteer Experience</h2>
+
+    <div ng-repeat="volunteer in profile.volunteer.volunteerExperiences.values" class="item">
+        <h3>{{volunteer.role}}</h3>
+        <h4>{{volunteer.organization.name}}</h4>
+        <h5>{{volunteer.description}}</h5>
+    </div>
+</section>
+
+<!--Contact-->
+<a name="contact"></a>
+<section>
+    <h2>Advice for Contacting me</h2>
+
+    <p>You can contact me through
+        <a href="{{profile.publicProfileUrl}}" style="text-decoration:none;">
+            <span style="color:#0783B6; font-weight: 700;">LinkedIn</span>
+            <img src="img/btn_in_20x15.png" width="20" height="15"
+                 alt="View Luis Arriojas's LinkedIn profile" style="vertical-align:middle" border="0">
+        </a>
+    </p>
+</section>
+
+<!--Footer-->
+<div id="footer">
+    <img src="img/agplv3.png"/>
+    <br/>
+    Developed by <a href="//www.luisarriojas.com" title="Senior Web Engineer"
+                    target="_blank">Luis E. Arriojas</a> and licensed under <a href="LICENSE.txt"
+                                                                               target="_blank">AGPLv3</a>
+    <br>
+    Forked on <a href="https://github.com/luisarriojas/website-linkedin-php" target="_blank">Github</a></div>
+</div>
+</body>
+</html>
